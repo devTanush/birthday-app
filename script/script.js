@@ -33,9 +33,17 @@ $(document).ready(()=> {
         let inputDay = parseInt(day);
         let inputMonth = parseInt(month);
         let inputYear = parseInt(year);
-        // Leap year validation
-        if(!isLeapYear(inputYear) && inputMonth > 28) {
-            displayNotification(`The year ${year} is not a leap year!`);
+        // Feb month validation
+        if(inputMonth == 2) {
+            if(inputDay > 29) {
+                displayNotification(`The day entered is greater for the month of February.`);
+            }
+            if(inputDay > 28 && inputDay < 30) {
+                if(!isLeapYear(inputYear)) {
+                    displayNotification(`The year ${year} is not a leap year!`);
+                }
+            }
+        
         }
         //
     }
