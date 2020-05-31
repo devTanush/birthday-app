@@ -6,6 +6,16 @@ body{
 	margin-top: 60px;
 }
 
-.notification {
+#notification{
     display: none;
+}
+
+#hbd-results{
+    display: none;
+}
+
+.hbd-body{
+    border-radius: 3px;
+    background-color: #ebe0ff;
+    border: #525252 solid 1px;
 }
