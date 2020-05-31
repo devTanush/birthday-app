@@ -1,5 +1,5 @@
-$(document).ready(()=> {
-    $("#form-submit form").on("submit", (event)=> {
+$(document).ready(() => {
+    $("#form-submit form").on("submit", (event) => {
         event.preventDefault();
         let name = $("input#first-name").val();
         let female = $("input#female").val();
@@ -7,26 +7,22 @@ $(document).ready(()=> {
         let day = $("select#day").val();
         let month = $("select#month").val();
         let year = $("input#year").val();
-        console.log(`Name: ${name}`);
-        console.log(`Female: ${female}`);
-        console.log(`Male: ${male}`);
-        console.log(`Day: ${day}`);
-        console.log(`Month: ${month}`);
-        console.log(`Year: ${year}`);
         validateInputs(name, female, male, day, month, year);
     });
-    const displayNotification = (text)=> {
+    const displayNotification = (text) => {
         $('#notification').text("Error! " + text);
         $("#notification").toggle();
         setTimeout(() => $("#notification").toggle(), 4000 );
     }
     const validateInputs = (name, female, male, day, month, year)=> {
-        if(name == '' || name.length() == 0) {
+        if(name == '') {
             displayNotification(`Kindly indicate you name in the 'First Name' section.`);
         }
         if(female == undefined && male == undefined) {
             displayNotification(`Kindly indicate your gender.`); 
         }
+
+        validateDate(day, month, year);
     }
 
     const validateDate = (day, month, year) => {
@@ -45,10 +41,27 @@ $(document).ready(()=> {
             }
         
         }
-        //
+        // 30-day Month validation
+        if(inputMonth == 4 || inputMonth == 6 || inputMonth == 9 || inputMonth == 11) {
+            if(inputDay > 30) {
+                displayNotification(`${getMonthName(inputMonth)} is a 30 day month! Please input correct date.`);
+            }
+        }
     }
 
     const isLeapYear = (year) => {
         return (year%400)?((year%100)?((year%4)?false:true):false):true;
+    }
+
+    const getMonthName = (monthIndex) => {
+        let monthArr = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+        let monthName = '';
+        monthArr.forEach((element, i) => {
+            if(i+1 === monthIndex) {
+                console.log(`index: ${i}`);
+                monthName = monthArr[i];
+            }
+        });
+        return monthName;
     }
   });
