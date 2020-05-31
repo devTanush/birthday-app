@@ -1,6 +1,46 @@
-body{
-    background-color: #525252;
-}
+  body{
+    margin:0;
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    font-size:17px;
+    line-height:1.6;
+  }
+  
+  .header{
+    background-image:url('../img/landingpage.jpg');
+    background-size:cover;
+    background-position:center;
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:0 20px;
+  }
+  
+  .header h1{
+    font-size:50px;
+    line-height:1.2;
+  }
+  
+  .header p{
+    font-size:20px;
+  }
+  
+  .header .button{
+    font-size:18px;
+    text-decoration:none;
+    color:#926239;
+    border:#926239 1px solid;
+    padding:10px 20px;
+    border-radius:10px;
+    margin-top:20px;
+  }
+  
+  .header .button:hover{
+    background:#926239;
+    color:#fff;
+  }
 
 .centered-form{
 	margin-top: 60px;
